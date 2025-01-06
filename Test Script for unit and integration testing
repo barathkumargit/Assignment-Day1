@@ -1,0 +1,34 @@
+# Unit Test: calculate_discount #
+Focuses on testing the calculate_discount function in isolation.
+Ensures that for given inputs (price and discount percentage), the function returns the correct discount amount.
+Tests edge cases like:
+Zero price.
+Zero discount percentage.
+Full (100%) discount.
+# Integration Test: final_price #
+Tests the interaction between calculate_discount and final_price.
+Validates that the final_price function correctly calls calculate_discount and uses its result to calculate the final price.
+Includes edge cases to ensure the overall logic 
+
+
+# test_services.py
+import unittest
+from services import calculate_discount, final_price
+
+class TestCalculateDiscount(unittest.TestCase):
+    def test_calculate_discount(self):
+        # Unit test for calculate_discount function
+        self.assertEqual(calculate_discount(100, 10), 10)  # 10% of 100 is 10
+        self.assertEqual(calculate_discount(200, 15), 30)  # 15% of 200 is 30
+        self.assertEqual(calculate_discount(0, 50), 0)     # Edge case: price is 0
+        self.assertEqual(calculate_discount(50, 0), 0)     # Edge case: discount is 0
+        self.assertEqual(calculate_discount(100, 100), 100) # 100% discount
+
+class TestFinalPrice(unittest.TestCase):
+    def test_final_price(self):
+        # Integration test for final_price function
+        self.assertEqual(final_price(100, 10), 90)  # 100 - 10% of 100 = 90
+        self.assertEqual(final_price(200, 15), 170) # 200 - 15% of 200 = 170
+        self.assertEqual(final_price(50, 0), 50)    # No discount applied
+        self.assertEqual(final_price(0, 50), 0)     # Edge case: price is 0
+        self.assertEqual(final_price(100, 100), 0)  # 100% discount
