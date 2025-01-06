@@ -1,0 +1,47 @@
+The Task is to change snake_case to camelCase
+We want to change keys in a JSON object like this
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email_address": "john.doe@example.com"
+}
+To do like this 
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "emailAddress": "john.doe@example.com"
+}
+write a JavaScript function to automate this transformation. The function will:
+*Loop through each key in the object.
+*Change snake_case keys to camelCase.
+*Return a new object with the transformed keys.
+
+function convertSnakeToCamel(snakeCaseObj) {
+    const camelCaseObj = {};
+
+    for (const key in snakeCaseObj) {
+        // Convert snake_case to camelCase
+        const camelKey = key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+        camelCaseObj[camelKey] = snakeCaseObj[key];
+    }
+
+    return camelCaseObj;
+}
+
+// Example usage
+const snakeCaseObject = {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email_address": "john.doe@example.com"
+};
+
+const camelCaseObject = convertSnakeToCamel(snakeCaseObject);
+console.log(camelCaseObject);
+
+output 
+
+{
+    firstName: "John",
+    lastName: "Doe",
+    emailAddress: "john.doe@example.com"
+}
