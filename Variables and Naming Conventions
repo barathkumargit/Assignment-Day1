@@ -1,0 +1,11 @@
+## Function to multiply two numbers and add the second one ##
+def multiply_and_add(base, multiplier):
+    product = base * multiplier
+    result = product + multiplier
+    return result
+
+## Function to calculate the sum of two numbers and the multiply_and_add result ##
+def calculate_sum_and_result(value1, value2):
+    total_sum = value1 + value2
+    operation_result = multiply_and_add(value1, value2)
+    return total_sum, operation_result
