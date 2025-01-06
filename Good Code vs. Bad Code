@@ -1,0 +1,6 @@
+def process_status(data):
+    status_messages = {
+        'active': 'Active',
+        'inactive': 'Inactive',
+    }
+    print(status_messages.get(data.get('status'), 'Unknown'))
